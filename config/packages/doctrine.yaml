@@ -33,6 +33,12 @@ when@prod:
                 type: pool
                 pool: doctrine.result_cache_pool
 
+when@test:
+    doctrine:
+        dbal:
+            url: '%env(resolve:DATABASE_URL)%'
+
+
     framework:
         cache:
             pools:

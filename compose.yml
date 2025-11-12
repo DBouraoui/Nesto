@@ -1,11 +1,12 @@
 services:
-    php:
+    nesto-php:
+        container_name: nesto-backend
         build:
             context: .
             dockerfile: Dockerfile
         restart: always
         depends_on:
-            - boilerplate-database
+            - nesto-database
         ports:
             - "8000:8080"
             - "443:443"
@@ -17,58 +18,46 @@ services:
             - .:/app
             - caddy_data:/data
             - caddy_config:/config
-        networks:
-            - database_nw
         deploy:
             replicas: 1
             restart_policy:
                 condition: on-failure
 
-    boilerplate-database:
-        image: postgres:latest
+    nesto-database:
+        container_name: nesto-database
+        image: mysql:8.0
         restart: always
         environment:
-            POSTGRES_PASSWORD: ${PG_PASSWORD:-root}
-            POSTGRES_USER: ${PG_USER:-root}
-            POSTGRES_DB: ${PG_DB:-app}
+            MYSQL_ROOT_PASSWORD: root
         volumes:
-            - boilerplate_data:/var/lib/postgresql/data
-        networks:
-            - database_nw
-            - adminer_nw
-            - grafana_nw
-        healthcheck:
-            test: [ "CMD-SHELL", "pg_isready -U ${PG_USER:-root}" ]
-            interval: 10s
-            timeout: 5s
-            retries: 5
+            -   nesto_database:/etc/mysql/conf.d
+        ports:
+            -   "3306:3306"
         deploy:
             replicas: 1
             restart_policy:
                 condition: on-failure
 
-    adminer:
-        image: adminer
+    nesto-phpmyadmin:
+        container_name: nesto-phpmyadmin
+        depends_on:
+            -   nesto-database
+        image: phpmyadmin
         restart: always
+        environment:
+            PMA_USER: root
+            PMA_PASSWORD: root
+            PMA_HOST: nesto-database
+            PMA_PORT: 3306
         ports:
-            - "8080:8080"
-        networks:
-            - adminer_nw
+            -   "8080:80"
         deploy:
             replicas: 1
             restart_policy:
                 condition: on-failure
 
 volumes:
-    boilerplate_data:
     caddy_data:
     caddy_config:
+    nesto_database:
 
-
-networks:
-    database_nw:
-        driver: bridge
-    adminer_nw:
-        driver: bridge
-    grafana_nw:
-        driver: bridge
