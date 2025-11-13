@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * This DTO captures the email and password submitted during the sign-up process.
  */
-class UserRegisterDto
+class UserRegisterDto implements DtoInterface
 {
     /**
      * The user's email address.

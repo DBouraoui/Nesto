@@ -16,7 +16,7 @@ consume:
 	php bin/console messenger:consume async -vv
 
 test:
-	php bin/phpunit --testdox
+	docker compose exec nesto-php php bin/phpunit --testdox
 
 clean-cache:
 	php bin/console cache:clear --env=dev && php bin/console cache:clear --env=test
