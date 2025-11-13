@@ -17,10 +17,9 @@ security:
             json_login:
                 username_path: email
                 check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
+                success_handler: App\Security\AuthenticationSuccessHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
         api:
-
             pattern: ^/api
             stateless: true
             jwt: ~
@@ -28,6 +27,7 @@ security:
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/v1/auth/^, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/user/^, roles: IS_AUTHENTICATED_ONLY }
 
 when@test:
     security:

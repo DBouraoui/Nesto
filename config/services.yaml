@@ -7,6 +7,12 @@ services:
     App\:
         resource: '../src/'
 
+    App\Security\AuthenticationSuccessHandler:
+        arguments:
+            $jwtManager: '@lexik_jwt_authentication.jwt_manager'
+            $tokenTtl: 3600
+
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         arguments:
             - '%env(DATABASE_URL)%'
+
