@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\auth;
 
 use App\Tests\Trait\UserTestTrait;
 use Doctrine\ORM\Tools\SchemaTool;

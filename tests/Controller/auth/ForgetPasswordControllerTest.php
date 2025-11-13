@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\auth;
 
 use App\Tests\Trait\UserTestTrait;
 use Doctrine\ORM\Tools\SchemaTool;
-use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ForgetPasswordControllerTest extends WebTestCase

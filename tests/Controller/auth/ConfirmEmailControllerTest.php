@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\auth;
 
 use App\Entity\User;
 use App\Tests\Trait\UserTestTrait;
