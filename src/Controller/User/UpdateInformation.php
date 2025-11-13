@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Auth;
+namespace App\Controller\User;
 
 use Symfony\Component\Routing\Attribute\Route;
 

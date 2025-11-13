@@ -20,9 +20,6 @@ final class UpdatePasswordControllerTest extends WebTestCase
     public string $password = "password";
     public string $newPassword = "newPassword";
 
-    public const UPDATE_PASSWORD_PATH = '/api/v1/update-password';
-    public const FORGET_PASSWORD_PATH = '/api/v1/forget-password';
-
     protected function setUp(): void
     {
 

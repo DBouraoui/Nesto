@@ -18,7 +18,6 @@ final class ConfirmEmailControllerTest extends WebTestCase
     public string $email = "tes@test.com";
     public string $password = "password";
 
-    public const CONFIRM_EMAIL_PATH = '/api/v1/confirm-email';
 
     protected function setUp(): void
     {

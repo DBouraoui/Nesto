@@ -10,11 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Handles user password update requests via token.
  */
-#[Route(path: '/api/v1', name: 'app_auth_v1_')]
+#[Route(path: '/api/v1/auth', name: 'app_v1_auth_')]
 class UpdatePasswordController extends AbstractController
 {
     public function __construct(

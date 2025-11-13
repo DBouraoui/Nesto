@@ -11,11 +11,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Handle forget password requests by sending a reset token.
  */
-#[Route(path: '/api/v1', name: 'app_auth_v1_')]
+#[Route(path: '/api/v1/auth', name: 'app_v1_auth_')]
 final class ForgetPasswordController extends AbstractController
 {
     public function __construct(
@@ -23,7 +24,7 @@ final class ForgetPasswordController extends AbstractController
         private readonly AuthService       $authService, private readonly LoggerInterface $logger
     ) {}
 
-    #[Route(path: '/forget-password', name: 'forget-password', methods: ['POST'])]
+    #[Route(path: '/forget-password', name: 'forget_password', methods: ['POST'])]
     public function __invoke(Request $request): JsonResponse
     {
         try {

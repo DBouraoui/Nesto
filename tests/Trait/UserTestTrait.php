@@ -8,8 +8,11 @@ use Doctrine\ORM\EntityManagerInterface;
 trait UserTestTrait
 {
     public ?EntityManagerInterface $em;
-    public const REGISTER_PATH = "/api/v1/register";
+    public const REGISTER_PATH = "/api/v1/auth/register";
     public const LOGIN_PATH = "/api/login_check";
+    public const CONFIRM_EMAIL_PATH = '/api/v1/auth/confirm-email';
+    public const FORGET_PASSWORD_PATH = '/api/v1/auth/forget-password';
+    public const UPDATE_PASSWORD_PATH = '/api/v1/auth/update-password';
 
 
     public function createUser($client, ?string $email = "testuser@example.com",?string $password = "SecurePass123!"): void
