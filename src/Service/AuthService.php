@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\DTO\UserRegisterDto;
 use App\Entity\User;
 use App\Entity\UserToken;
 use App\Enum\TokenType;

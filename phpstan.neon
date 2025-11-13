@@ -12,6 +12,8 @@ parameters:
         - config/*
         - var/*
         - vendor/*
+        - src/Entity/*
+        - test/*
         - tests/bootstrap.php
 
 includes:

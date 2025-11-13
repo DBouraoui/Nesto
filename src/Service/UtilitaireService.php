@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class UtilitaireService
+readonly class UtilitaireService
 {
 
     public function __construct(
@@ -37,7 +37,7 @@ class UtilitaireService
         return true;
     }
 
-    public function mapAndValidateRequestDto($data, DtoInterface $object): DtoInterface {
+    public function mapAndValidateRequestDto($data, $object) {
 
         if (empty($data)) {
             throw  new Exception("Request is empty", 500);

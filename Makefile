@@ -10,7 +10,7 @@ down:
 	docker compose down -v
 
 check:
-	vendor/bin/phpstan analyse
+	vendor/bin/phpstan analyse --memory-limit 1G
 
 consume:
 	php bin/console messenger:consume async -vv
