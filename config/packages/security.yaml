@@ -27,10 +27,10 @@ security:
 
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/register, roles: PUBLIC_ACCESS }
-        - { path: ^/api/confirm-email, roles: PUBLIC_ACCESS }
-        - { path: ^/api/forget-password, roles: PUBLIC_ACCESS }
-        - { path: ^/api/update-password, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/confirm-email, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/forget-password, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/update-password, roles: PUBLIC_ACCESS }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
 
 when@test:

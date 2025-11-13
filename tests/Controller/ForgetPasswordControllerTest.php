@@ -14,7 +14,7 @@ final class ForgetPasswordControllerTest extends WebTestCase
 
     public string $email = "tes@test.com";
     public string $password = "password";
-    public const FORGET_PASSWORD_PATH = '/api/forget-password';
+    public const FORGET_PASSWORD_PATH = '/api/v1/forget-password';
 
     protected function setUp(): void
     {

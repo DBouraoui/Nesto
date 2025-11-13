@@ -22,6 +22,7 @@ use Symfony\Component\Routing\Attribute\Route;
  *
  * @author DylanBro
  */
+#[Route(path: '/api/v1', name: 'app_auth_v1_')]
 final class RegisterController extends AbstractController
 {
     public function __construct(
@@ -37,7 +38,7 @@ final class RegisterController extends AbstractController
      * Accepts user data, applies IP-based rate limit, validates input,
      * and creates the user account.
      */
-    #[Route('/api/register', name: 'app_register', methods: ['POST'])]
+    #[Route('/register', name: 'register', methods: ['POST'])]
     public function __invoke(Request $request): JsonResponse
     {
         try {

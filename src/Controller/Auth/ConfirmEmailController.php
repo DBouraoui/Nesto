@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -16,13 +15,14 @@ use Symfony\Component\Routing\Attribute\Route;
  *
  * Example: /api/confirm-email?token=xxxx&email=example@domain.com
  */
+#[Route(path: '/api/v1', name: 'app_auth_v1_')]
 final class ConfirmEmailController extends AbstractController
 {
     public function __construct(
         private AuthService $authService, private readonly LoggerInterface $logger,
     ) {}
 
-    #[Route(path: '/api/confirm-email', name: 'confirm-email', methods: ['GET'])]
+    #[Route(path: '/confirm-email', name: 'confirm-email', methods: ['GET'])]
     public function __invoke(Request $request): JsonResponse
     {
         try {

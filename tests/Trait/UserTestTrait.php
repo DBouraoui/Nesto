@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 trait UserTestTrait
 {
     public ?EntityManagerInterface $em;
-    public const REGISTER_PATH = "/api/register";
+    public const REGISTER_PATH = "/api/v1/register";
     public const LOGIN_PATH = "/api/login_check";
 
 

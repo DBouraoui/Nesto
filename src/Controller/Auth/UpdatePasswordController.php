@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 /**
  * Handles user password update requests via token.
  */
+#[Route(path: '/api/v1', name: 'app_auth_v1_')]
 class UpdatePasswordController extends AbstractController
 {
     public function __construct(
@@ -27,7 +28,7 @@ class UpdatePasswordController extends AbstractController
      * @param Request $request The HTTP request containing the token and new password.
      * @return Response A JSON response indicating success or failure.
      */
-    #[Route(path: '/api/update-password', name: 'app_updatePassword', methods: ['PATCH'])]
+    #[Route(path: '/update-password', name: 'updatePassword', methods: ['PATCH'])]
     public function __invoke(Request $request): Response
     {
         try {

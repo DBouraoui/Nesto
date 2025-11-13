@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 /**
  * Handle forget password requests by sending a reset token.
  */
+#[Route(path: '/api/v1', name: 'app_auth_v1_')]
 final class ForgetPasswordController extends AbstractController
 {
     public function __construct(
@@ -22,7 +23,7 @@ final class ForgetPasswordController extends AbstractController
         private readonly AuthService       $authService, private readonly LoggerInterface $logger
     ) {}
 
-    #[Route(path: '/api/forget-password', name: 'forget-password', methods: ['POST'])]
+    #[Route(path: '/forget-password', name: 'forget-password', methods: ['POST'])]
     public function __invoke(Request $request): JsonResponse
     {
         try {
