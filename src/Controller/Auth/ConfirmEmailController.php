@@ -38,10 +38,10 @@ final class ConfirmEmailController extends AbstractController
 
             $this->logger->log(1,sprintf("%s confirm her email",$user->getEmail()));
 
-            return $this->json(['message' => 'Email successfully confirmed.'], Response::HTTP_OK);
+            return $this->json(['success'=>true, 'message' => 'Email successfully confirmed.'], Response::HTTP_OK);
 
         } catch (\Throwable $e) {
-            return $this->json(['error' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+            return $this->json(['message' => $e->getMessage(), 'success'=>false], Response::HTTP_BAD_REQUEST);
         }
     }
 }

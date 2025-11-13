@@ -37,9 +37,9 @@ final class ForgetPasswordController extends AbstractController
 
             $this->logger->log(1,sprintf("send email for reset password at %s", $dto->email));
 
-            return $this->json(['message' => 'Password reset email sent.'], Response::HTTP_OK);
+            return $this->json(['success'=>true, 'message' => 'Password reset email sent.'], Response::HTTP_OK);
         } catch (\Throwable $e) {
-            return $this->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->json(['message' => $e->getMessage(), 'success'=>false], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

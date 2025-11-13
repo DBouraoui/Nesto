@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
  * Handles user password update requests via token.
  */
 #[Route(path: '/api/v1/auth', name: 'app_v1_auth_')]
-class UpdatePasswordController extends AbstractController
+class ResetPasswordController extends AbstractController
 {
     public function __construct(
         private AuthService       $userService,
@@ -29,7 +29,7 @@ class UpdatePasswordController extends AbstractController
      * @param Request $request The HTTP request containing the token and new password.
      * @return Response A JSON response indicating success or failure.
      */
-    #[Route(path: '/update-password', name: 'updatePassword', methods: ['PATCH'])]
+    #[Route(path: '/reset-password', name: 'reset_password', methods: ['PATCH'])]
     public function __invoke(Request $request): Response
     {
         try {
@@ -46,11 +46,11 @@ class UpdatePasswordController extends AbstractController
 
            $this->logger->log(1,sprintf("%s update password",$user->getEmail()));
 
-            return $this->json('success', Response::HTTP_OK);
+            return $this->json(['success'=> true, 'message'=>'password update'], Response::HTTP_OK);
 
         } catch (\Throwable $throwable) {
             return $this->json(
-                ['error' => $throwable->getMessage()],
+                ['message' => $throwable->getMessage(), 'success'=>false],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }

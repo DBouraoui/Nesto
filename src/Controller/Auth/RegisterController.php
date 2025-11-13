@@ -60,11 +60,11 @@ final class RegisterController extends AbstractController
 
             $this->logger->log(1,sprintf("%s register", $user->getEmail()));
 
-            return $this->json('success', Response::HTTP_CREATED);
+            return $this->json(['success'=>true, 'message' => 'User successfully registered.'], Response::HTTP_CREATED);
 
         } catch (\Throwable $e) {
             return $this->json(
-                ['error' => $e->getMessage()],
+                ['message' => $e->getMessage(), 'success'=>false],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }

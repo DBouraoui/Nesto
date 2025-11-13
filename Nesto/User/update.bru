@@ -1,19 +1,18 @@
 meta {
-  name: Register
+  name: update
   type: http
   seq: 1
 }
 
-post {
-  url: http://localhost:8000/api/v1/auth/register
+put {
+  url: http://localhost:8000/api/v1/user
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "email":"{{email}}",
-    "password":"{{password}}"
+    
   }
 }
 
